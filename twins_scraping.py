@@ -62,18 +62,17 @@ def cut_out_new_posts(title, data_list):
     # 送信済みの掲示がなければ last_sent をひとまず現在の時刻とする(今回は何も送信しない)
     if last_sent_date_str == "":
         last_sent = datetime.now()
-    
     # 過去に送信済みの掲示があるとき
     else:
         # 文字列を datetime 型に変換
         last_sent = datetime.strptime(last_sent_date_str, "%Y/%m/%d %H:%M:%S")
 
-    # data_list の各データについて、掲載時刻を last_sent と比較し、last_sent より新しければ new_posts に加える
+    # data_list の各データについて、掲載日時を last_sent と比較し、last_sent より新しければ new_posts に加える
     for data in data_list:
-        date_str = data[4]
+        date_str = data[4] # 掲載日時
         date = datetime.strptime(date_str, "%Y/%m/%d %H:%M:%S")
         if date > last_sent:
-            data_plus_order = data + [order] # 辞書型の中の位置もリスト末尾に加える
+            data_plus_order = data + [order] # 辞書型の中での位置もリスト末尾に加える
             new_posts.append(data_plus_order)
         else:
             break
@@ -84,7 +83,6 @@ def cut_out_new_posts(title, data_list):
     else:
         last_sent_list[order] = last_sent.strftime("%Y/%m/%d %H:%M:%S")
     
-
 
     # last_sent.txt を更新する
     with open("last_sent.txt", "w+") as f:
@@ -137,11 +135,10 @@ def scrape_TWINS(driver, wait, wait_time, title):
         count = 0
         data_list = []
         while count < 3: # 10秒おきに3回まで施行する
-            
             # テーブルが表示されるまで待つ
             # iframe 内のテーブルが表示されるまで待つ（例として、tableタグで特定）
             wait.until(EC.presence_of_element_located((By.TAG_NAME, "table")))
-            time.sleep(1) # 一応ダメ押しで待つ
+            time.sleep(wait_time) # 一応ダメ押しで待つ
 
             # HTMLの取得
             html = driver.page_source

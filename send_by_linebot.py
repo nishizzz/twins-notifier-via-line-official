@@ -7,7 +7,7 @@ from title_dict import title_dict
 
 def make_text_for_LINE(kj):
     """
-    LINEに送る用にテキストを整形する（通知で見えないように装飾を足す）
+    LINE送信用にテキストを整形する
     """
 
     category = list(title_dict)[kj[5]]
@@ -20,7 +20,7 @@ def make_text_for_LINE(kj):
 
 def send_message(text):
     """
-    LINEbotでメッセージを送る
+    LINEでメッセージを送信する
     """
 
     # 環境変数の読み出し
