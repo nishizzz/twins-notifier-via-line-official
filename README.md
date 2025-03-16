@@ -10,10 +10,10 @@ pip install -r requirements.txt
 ```
 
 ### 2. LINE公式アカウントの用意
-公式ドキュメント等を参考に、LINE公式アカウントを用意してください。
+公式ドキュメント等を参考にLINE公式アカウントを用意してください。
 
 ### 3. メッセージ送信先の　LINE User ID を取得。
-このサイト(https://zenn.dev/akid/scraps/273eaa58e3be58)を参考に、メッセージを送りたい全てのユーザーのIDを取得してください。
+こちらのサイト(https://zenn.dev/akid/scraps/273eaa58e3be58) を参考に、メッセージを送りたい全てのユーザーのIDを取得してください。
 
 ### 4. .envファイルの準備
 .env-example ファイルの各変数をあなた自身の情報に書き換え、.env ファイルとして保存してください。
